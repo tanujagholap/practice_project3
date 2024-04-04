@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table border="2px black">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>PRODUCT NAME</th>
+                <th>PRICE</th>
+                <th>QUANTITY</th>
+                <th>PURCHASE DATE</th>
+                <th>MOBILE NUMBER</th>
+                <th>WHATS THE ISSUE?</th>
+                <th colspan="2">ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in form %}
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.pro_name }}</td>
+                <td>{{ i.price }}</td>
+                <td>{{ i.quantity }}</td>
+                <td>{{ i.purchase_date }}</td>
+                <td>{{ i.mobile_no }}</td>
+                <td>{{ i.issue }}</td>
+                <td>
+                    <a href="{% url 'update_url' i.id %}">
+                        <button>UPDATE</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'delete_url' i.id %}">
+                        <button>DELETE</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
